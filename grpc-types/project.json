@@ -1,0 +1,9 @@
+{
+  "name": "grpc-types",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "grpc-types/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project grpc-types --web",
+  "targets": {}
+}

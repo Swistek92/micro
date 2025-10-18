@@ -1,0 +1,51 @@
+services:
+  # --- Infra ---
+  zookeeper:
+    image: wurstmeister/zookeeper
+    container_name: kafka-zookeeper
+    ports:
+      - '2181:2181'
+
+  kafka:
+    image: wurstmeister/kafka
+    container_name: kafka-broker
+    ports:
+      - '9092:9092'
+    environment:
+      # nasłuch na wszystkich interfejsach w kontenerze
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+      # adres, pod którym inne kontenery w tej sieci zobaczą brokera
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      # połączenie do Zookeepera (nazwa serwisu)
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      # (opcjonalnie) automatyczna kreacja topiców lokalnie
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+    depends_on:
+      - zookeeper
+
+  # --- Twoje aplikacje ---
+  api-geteway:
+    build:
+      context: .
+      dockerfile: apps/api-geteway/Dockerfile
+    ports:
+      - '3000:3000'
+    depends_on:
+      - kafka
+
+  payment-microservice:
+    build:
+      context: .
+      dockerfile: apps/payment-microservice/Dockerfile
+    ports:
+      - '3001:3000'
+    depends_on:
+      - kafka
+  products-microservice:
+    build:
+      context: .
+      dockerfile: apps/products-microservice/Dockerfile
+    ports:
+      - '3002:3000'
+    depends_on:
+      - kafka
