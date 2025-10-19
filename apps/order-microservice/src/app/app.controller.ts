@@ -2,7 +2,6 @@ import { Controller, Get, Inject } from '@nestjs/common';
 import { AppService } from './app.service';
 import { ClientKafka, MessagePattern, Payload } from '@nestjs/microservices';
 import { KAFKA_SERVICE, KAFKA_TOPICS } from '@kafa-microservices/proto';
-
 @Controller()
 export class AppController {
   constructor(
@@ -14,14 +13,12 @@ export class AppController {
   getData() {
     return this.appService.getData();
   }
-  @Get('health')
-  health() {
-    return { status: 'ok' };
-  }
 
-  @MessagePattern(KAFKA_TOPICS.PROCESS_PAYMENT)
-  processPayment(@Payload() data: any) {
-    console.log('payment service payment process', data);
-    this.kafkaClient.emit(KAFKA_TOPICS.PAYMENT_SUCESS, data);
+  @MessagePattern(KAFKA_TOPICS.CREATED_ORDER)
+  handlerOrderCreated(@Payload() order: any) {
+    console.log('order service revcive order', order);
+    // simulate process the order
+
+    this.kafkaClient.emit(KAFKA_TOPICS.PROCESS_PAYMENT, order);
   }
 }

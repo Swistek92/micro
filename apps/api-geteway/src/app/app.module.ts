@@ -2,7 +2,10 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { PRODUCTS_PACKAGE_NAME } from '@kafa-microservices/proto';
+import {
+  PRODUCTS_PACKAGE_NAME,
+  KAFKA_SERVICE,
+} from '@kafa-microservices/proto';
 import { join } from 'path';
 import { AddController } from './add/add.controller';
 import { ProductController } from './product/product.controller';
@@ -16,6 +19,15 @@ import { ProductController } from './product/product.controller';
         options: {
           package: PRODUCTS_PACKAGE_NAME,
           protoPath: join(__dirname, 'proto/products.proto'),
+        },
+      },
+      {
+        name: KAFKA_SERVICE,
+        transport: Transport.KAFKA,
+        options: {
+          client: {
+            brokers: ['localhost:9092'],
+          },
         },
       },
     ]),

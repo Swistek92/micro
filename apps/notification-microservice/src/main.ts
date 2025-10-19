@@ -18,13 +18,13 @@ async function bootstrap() {
           brokers: ['localhost:9092'],
         },
         consumer: {
-          groupId: 'payment-consumer-group',
+          groupId: 'notification-consumer-group',
         },
       },
     }
   );
   await app.listen();
-  Logger.log(`Payment Application is listen to kafka`);
+  Logger.log(`🚀 notification Application is listen to kafka`);
 }
 
 bootstrap();
