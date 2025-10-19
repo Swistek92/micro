@@ -6,4 +6,8 @@ export class AddController {
   get(): { message: string } {
     return { message: 'Hello from add controller' };
   }
+  @Get('/11')
+  getaa(): { message: string } {
+    return { message: 'Hello from add controller' };
+  }
 }
