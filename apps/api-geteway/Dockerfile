@@ -5,6 +5,7 @@ WORKDIR /workspace
 COPY package*.json nx.json tsconfig.base.json ./
 COPY apps ./apps
 COPY proto ./proto
+COPY types ./types
 RUN npm install --no-audit --no-fund
 RUN npx nx build api-geteway --configuration=production
 
