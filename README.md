@@ -1,4 +1,4 @@
-[![Build & Push api-geteway](https://github.com/Swistek92/micro/actions/workflows/api-geteway-docker.yml/badge.svg?branch=main)](https://github.com/Swistek92/micro/actions/workflows/api-geteway-docker.yml)
+![Frontend CI](https://github.com/Swistek92/micro/actions/workflows/api-geteway.yml/badge.svg)
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
