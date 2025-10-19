@@ -13,3 +13,5 @@ docker rm -f $(docker ps -aq)
 docker compose up --build -d
 
 pkill node
+
+npx protoc --ts_proto_out=./types/ ./proto/\*.proto --ts_proto_opt=nestJs=true
