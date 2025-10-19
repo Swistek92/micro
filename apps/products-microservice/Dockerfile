@@ -3,7 +3,7 @@ WORKDIR /workspace
 COPY package*.json nx.json tsconfig.base.json ./
 COPY apps ./apps
 COPY proto ./proto
-COPY grpc-types ./grpc-types
+COPY types ./types
 # COPY libs ./libs
 RUN npm install --no-audit --no-fund
 RUN npx nx build products-microservice --configuration=production

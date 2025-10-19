@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "ignoreDeprecations": "5.0",
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
@@ -16,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@kafa-microservices/grpc-types": ["grpc-types/src/index.ts"]
+      "@kafa-microservices/proto": ["types/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
