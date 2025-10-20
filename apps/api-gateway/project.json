@@ -1,7 +1,7 @@
 {
-  "name": "api-geteway",
+  "name": "api-gateway",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/api-geteway/src",
+  "sourceRoot": "apps/api-gateway/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,7 +9,7 @@
       "options": {
         "command": "webpack-cli build",
         "args": ["--node-env=production"],
-        "cwd": "apps/api-geteway"
+        "cwd": "apps/api-gateway"
       },
       "configurations": {
         "development": {
@@ -22,8 +22,8 @@
       "cache": true,
       "executor": "@nx/js:prune-lockfile",
       "outputs": [
-        "{workspaceRoot}/dist/apps/api-geteway/package.json",
-        "{workspaceRoot}/dist/apps/api-geteway/package-lock.json"
+        "{workspaceRoot}/dist/apps/api-gateway/package.json",
+        "{workspaceRoot}/dist/apps/api-gateway/package-lock.json"
       ],
       "options": {
         "buildTarget": "build"
@@ -32,7 +32,7 @@
     "copy-workspace-modules": {
       "dependsOn": ["build"],
       "cache": true,
-      "outputs": ["{workspaceRoot}/dist/apps/api-geteway/workspace_modules"],
+      "outputs": ["{workspaceRoot}/dist/apps/api-gateway/workspace_modules"],
       "executor": "@nx/js:copy-workspace-modules",
       "options": {
         "buildTarget": "build"
@@ -48,15 +48,15 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "api-geteway:build",
+        "buildTarget": "api-gateway:build",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "api-geteway:build:development"
+          "buildTarget": "api-gateway:build:development"
         },
         "production": {
-          "buildTarget": "api-geteway:build:production"
+          "buildTarget": "api-gateway:build:production"
         }
       }
     }

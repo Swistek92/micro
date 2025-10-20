@@ -4,7 +4,7 @@
 
 ## 🚀 Services — API Gateway
 
-[![Build Status](https://github.com/Swistek92/micro/actions/workflows/api-geteway.yml/badge.svg)](https://github.com/Swistek92/micro/actions/workflows/api-geteway.yml)
+[![Build Status](https://github.com/Swistek92/micro/actions/workflows/api-gateway.yml/badge.svg)](https://github.com/Swistek92/micro/actions/workflows/api-gateway.yml)
 
 # Services — Monorepo
 

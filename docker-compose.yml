@@ -24,10 +24,10 @@ services:
       - zookeeper
 
   # --- Twoje aplikacje ---
-  api-geteway:
+  api-gateway:
     build:
       context: .
-      dockerfile: apps/api-geteway/Dockerfile
+      dockerfile: apps/api-gateway/Dockerfile
     ports:
       - '3000:3000'
     depends_on:
