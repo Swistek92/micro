@@ -1,11 +1,11 @@
-# .github/workflows/api-geteway-docker.yml
-name: Build & Push api-geteway
+# .github/workflows/api-gateway-docker.yml
+name: Build & Push api-gateway
 
 on:
   push:
     branches: [main]
     paths:
-      - 'apps/api-geteway/**'
+      - 'apps/api-gateway/**'
       - 'package.json'
       - 'package-lock.json'
       - 'pnpm-lock.yaml'
@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/api-geteway
+  IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/api-gateway
 
 jobs:
   docker:
@@ -53,7 +53,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: apps/api-geteway/Dockerfile
+          file: apps/api-gateway/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

@@ -10,25 +10,25 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
 
   // gRPC
-  // app.connectMicroservice<MicroserviceOptions>({
-  //   transport: Transport.GRPC,
-  //   options: {
-  //     url: '0.0.0.0:50051', // ważne w kontenerze
-  //     package: PRODUCTS_PACKAGE_NAME,
-  //     protoPath: join(process.cwd(), 'proto/products.proto'), // a nie __dirname
-  //   },
-  // });
+  app.connectMicroservice<MicroserviceOptions>({
+    transport: Transport.GRPC,
+    options: {
+      url: '0.0.0.0:50051', // ważne w kontenerze
+      package: PRODUCTS_PACKAGE_NAME,
+      protoPath: join(process.cwd(), 'proto/products.proto'), // a nie __dirname
+    },
+  });
 
-  // // Kafka
-  // app.connectMicroservice<MicroserviceOptions>({
-  //   transport: Transport.KAFKA,
-  //   options: {
-  //     client: { brokers: [process.env.KAFKA_BROKER ?? 'kafka:9092'] }, // w Dockerze "kafka:9092"
-  //     consumer: { groupId: 'order-consumer-group' },
-  //   },
-  // });
+  // Kafka
+  app.connectMicroservice<MicroserviceOptions>({
+    transport: Transport.KAFKA,
+    options: {
+      client: { brokers: [process.env.KAFKA_BROKER ?? 'kafka:9092'] }, // w Dockerze "kafka:9092"
+      consumer: { groupId: 'order-consumer-group' },
+    },
+  });
 
-  // await app.startAllMicroservices();
+  await app.startAllMicroservices();
   await app.listen(process.env.PORT ? Number(process.env.PORT) : 3000);
 
   Logger.log(`HTTP: http://localhost:${process.env.PORT ?? 3000}/api`);
