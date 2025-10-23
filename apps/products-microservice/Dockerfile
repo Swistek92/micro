@@ -13,5 +13,7 @@ WORKDIR /app
 ENV NODE_ENV=production
 COPY --from=builder /workspace/node_modules ./node_modules
 COPY --from=builder /workspace/dist/apps/products-microservice ./dist
+COPY --from=builder /workspace/proto ./proto
+COPY --from=builder /workspace/types ./proto
 EXPOSE 3000
 CMD ["node", "dist/main.js"]

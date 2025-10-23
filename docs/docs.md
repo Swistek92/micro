@@ -11,6 +11,7 @@ docker stop $(docker ps -q)
 docker kill $(docker ps -q)
 docker rm -f $(docker ps -aq)
 docker compose up --build -d
+docker exec -it api-gateway sh
 
 pkill node
 
