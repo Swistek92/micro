@@ -41,11 +41,19 @@ services:
       - '3001:3000'
     depends_on:
       - kafka
-  products-microservice:
+  order-microservice:
     build:
       context: .
-      dockerfile: apps/products-microservice/Dockerfile
+      dockerfile: apps/order-microservice/Dockerfile
     ports:
       - '3002:3000'
+    depends_on:
+      - kafka
+  notification-microservice:
+    build:
+      context: .
+      dockerfile: apps/order-microservice/Dockerfile
+    ports:
+      - '3003:3000'
     depends_on:
       - kafka
